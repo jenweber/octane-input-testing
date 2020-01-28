@@ -1,16 +1,190 @@
-<label for="firstname-001">First Name</label>
+<h1>Input testing</h1>
+
+<h2>Working</h2>
+
+<label for="firstname-001">First Name 1</label>
 {{!-- This works: uses camelCase event name --}}
 <Input @type="text" @keyDown={{this.updateName}} id="firstname-001" />
 
 
 {{!-- This works: uses 'on' with actual event name --}}
-<label for="firstname-002">First Name</label>
+<label for="firstname-002">First Name 2</label>
 <Input @type="text" {{on "keydown" this.updateName}} id="firstname-002" />
 
-{{!-- This does not work: uses dasherized event name --}}
-<label for="firstname-003">First Name</label>
-<Input @type="text" @key-down={{this.updateName}} id="firstname-003" />
+{{!-- 
 
-{{!-- This does not work: uses actual event name --}}
-<label for="firstname-004">First Name</label>
+    enter
+    insert-newline
+    escape-press
+    focus-in
+    focus-out
+    key-press
+    key-up
+ --}}
+<br><br>
+
+{{!-- doesn't do anything --}}
+<label for="firstname-010">First Name enter</label>
+<Input @type="text" {{on "enter" this.updateName}} id="firstname-010" />
+
+{{!-- doesn't do anything --}}
+<label for="firstname-011">First Name 11</label>
+<Textarea @type="text" {{on "insert-newline" this.updateName}} id="firstname-011" />
+
+{{!-- doesn't do anything --}}
+<label for="firstname-012">First Name 12</label>
+<Input @type="text" {{on "escape-press" this.updateName}} id="firstname-012" />
+
+{{!-- doesn't do anything --}}
+<label for="firstname-013">First Name 13</label>
+<Input @type="text" {{on "focus-in" this.updateName}} id="firstname-013" />
+
+{{!-- doesn't do anything --}}
+<label for="firstname-016">First Name 16</label>
+<Input @type="text" {{on "focus-out" this.updateName}} id="firstname-016" />
+
+{{!-- doesn't do anything --}}
+<label for="firstname-014">First Name key-press</label>
+<Input @type="text" {{on "key-press" this.updateName}} id="firstname-014" />
+
+{{!-- doesn't do anything --}}
+<label for="firstname-015">First Name key-up</label>
+<Input @type="text" {{on "key-up" this.updateName}} id="firstname-015" />
+
+<br><br>
+<h3>At syntax</h3>
+{{!-- doesn't do anything --}}
+<label for="firstname-at-017">First Name At enter</label>
+<Input @type="text" @enter={{this.updateName}} id="firstname-at-017" />
+
+{{!-- works --}}
+<label for="firstname-at-018">First Name At 18 newline</label>
+<Textarea @type="text" @insertNewline={{this.updateName}} id="firstname-at-018" />
+
+{{!-- doesn't do anything --}}
+<label for="firstname-at-019">First Name At 19 escape</label>
+<Input @type="text" @escapePress={{this.updateName}} id="firstname-at-019" />
+
+{{!-- works --}}
+<label for="firstname-at-020">First Name At 20 focus in</label>
+<Input @type="text" @focusIn={{this.updateName}} id="firstname-at-020" />
+
+{{!-- works --}}
+<label for="firstname-at-021">First Name At focusOut</label>
+<Input @type="text" @focusOut={{this.updateName}} id="firstname-at-021" />
+
+{{!-- works --}}
+<label for="firstname-at-022">First Name At keyPress</label>
+<Input @type="text" @keyPress={{this.updateName}} id="firstname-at-022" />
+
+{{!-- works --}}
+<label for="firstname-at-023">First Name At keyUp</label>
+<Input @type="text" @keyUp={{this.updateName}} id="firstname-at-023" />
+
+<br><br>
+<h3>Action syntax</h3>
+
+{{!-- works --}}
+<label for="firstname-action-017">First Name Action enter</label>
+<Input @type="text" @enter={{action "updateName"}} id="firstname-action-017" />
+
+{{!-- works --}}
+<label for="firstname-action-017b">First Name Action curly enter</label>
+{{input type="text" enter=(action "updateName") id="firstname-action-017b"}}
+
+{{!-- does not work --}}
+<label for="firstname-action-017c">First Name curly enter</label>
+{{input type="text" enter=this.updateName id="firstname-action-017c"}}
+
+{{!-- does not work --}}
+<label for="firstname-action-019">First Name Action 19 escape</label>
+<Input @type="text" @escapePress={{action "updateName"}} id="firstname-action-019" />
+
+{{!-- works --}}
+<label for="firstname-action-019b">First Name Action 19 escape dash press</label>
+<Input @type="text" @escape-press={{action "updateName"}} id="firstname-action-019b" />
+
+
+<h2>Not Working</h2>
+
+
+<label for="firstname-004">First Name 4</label>
 <Input @type="text" @keydown={{this.updateName}} id="firstname-004" />
+
+{{!-- This does not work: uses on event name --}}
+<label for="firstname-005">First Name 5</label>
+<Input @type="text" @onkeydown={{this.updateName}} id="firstname-005" />
+
+{{!-- This does not work: uses on event name --}}
+<label for="firstname-005a">First Name 5a</label>
+<Input @type="text" @onKeyDown={{this.updateName}} id="firstname-005a" />
+
+{{!-- This does not work: uses dasherized event name --}}
+<label for="firstname-003">First Name 3</label>
+<Input @type="text" @key-press={{this.updateName}} id="firstname-003" />
+
+
+{{!-- not working --}}
+<label for="firstname-006">First Name6</label>
+<Input @type="text" {{on "onkeydown" this.updateName}} id="firstname-006" />
+
+{{!-- not working --}}
+<label for="firstname-006a">First Name 6a</label>
+<Input @type="text" {{on "onKeyDown" this.updateName}} id="firstname-006a" />
+
+{{!-- not working --}}
+<label for="firstname-006b">First Name 6b</label>
+<Input @type="text" {{on "keyDown" this.updateName}} id="firstname-006b" />
+
+<h2>Resources</h2>
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">MDN</a></li>
+  <li><a href="https://guides.emberjs.com/release/components/built-in-components/#toc_input">Ember Guides</a></li>
+  <li><a href="https://api.emberjs.com/ember/release/classes/Ember.Templates.components/methods/Input?anchor=Input">API docs</a></li>
+</ul>
+
+
+{{!-- 
+TODO
+In the Guides, link to the "real" API docs page, https://api.emberjs.com/ember/release/classes/Ember.Templates.components/methods/Input?anchor=Input not https://api.emberjs.com/ember/release/classes/Ember.Templates.helpers/methods/if?anchor=input
+
+insert newline shouldn't be shown for the plain input component
+
+@key-press does not work, but @escape-press does.... <Input @escape-press={{...}} />
+Keypress is a real event and escape press is not?
+enter is not a real event but it also doesn't work
+ --}}
+
+<h2>focus</h2>
+
+ {{!-- no --}}
+<label for="firstname-focus-020">First Name 20 focus in</label>
+<Input @type="text" @focus-in={{this.updateName}} id="firstname-focus-020" />
+
+ {{!-- no --}}
+<label for="firstname-focus-020a">First Name 20a focus in</label>
+<Input @type="text" @focusin={{this.updateName}} id="firstname-focus-020a" />
+
+ {{!-- yes --}}
+<label for="firstname-focus-020b">First Name 20b focus in</label>
+<Input @type="text" {{on "focusin" this.updateName}} id="firstname-focus-020b" />
+
+ {{!-- no --}}
+<label for="firstname-focus-020bc">First Name 20c focus in</label>
+<Input @type="text" {{on "focus-in" this.updateName}} id="firstname-focus-020bc" />
+
+{{!-- no --}}
+<label for="firstname-focus-021">First Name focusOut</label>
+<Input @type="text" @focus-out={{this.updateName}} id="firstname-focus-021" />
+
+{{!-- no --}}
+<label for="firstname-focus-021a">First Name focusOuta</label>
+<Input @type="text" @focusout={{this.updateName}} id="firstname-focus-021a" />
+
+{{!-- yes --}}
+<label for="firstname-focus-021b">First Name focusOutb</label>
+<Input @type="text" {{on "focusout" this.updateName}} id="firstname-focus-021b" />
+
+{{!-- no --}}
+<label for="firstname-focus-021c">First Name focusOutc</label>
+<Input @type="text" {{on "focus-out" this.updateName}} id="firstname-focus-021c" />

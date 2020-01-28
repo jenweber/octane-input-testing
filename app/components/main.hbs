@@ -136,12 +136,6 @@
 <label for="firstname-006b">First Name 6b</label>
 <Input @type="text" {{on "keyDown" this.updateName}} id="firstname-006b" />
 
-<h2>Resources</h2>
-<ul>
-  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">MDN</a></li>
-  <li><a href="https://guides.emberjs.com/release/components/built-in-components/#toc_input">Ember Guides</a></li>
-  <li><a href="https://api.emberjs.com/ember/release/classes/Ember.Templates.components/methods/Input?anchor=Input">API docs</a></li>
-</ul>
 
 
 {{!-- 
@@ -153,7 +147,11 @@ insert newline shouldn't be shown for the plain input component
 @key-press does not work, but @escape-press does.... <Input @escape-press={{...}} />
 Keypress is a real event and escape press is not?
 enter is not a real event but it also doesn't work
- --}}
+
+Philosphical question - is the happy path today to NOT use the input component?
+
+Use linting to indicate which things won't work
+--}}
 
 <h2>focus</h2>
 

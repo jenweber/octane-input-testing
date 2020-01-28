@@ -7,4 +7,7 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function() {
+  this.route('input-arguments');
+  this.route('other-debugging');
+  this.route('native-events');
 });

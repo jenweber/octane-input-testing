@@ -1,0 +1,8 @@
+.broken {
+  border: 2px solid red;
+  border-radius: 3px;
+}
+
+li {
+  padding: 10px;
+}

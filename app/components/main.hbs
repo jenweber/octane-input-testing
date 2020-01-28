@@ -1,0 +1,16 @@
+<label for="firstname-001">First Name</label>
+{{!-- This works: uses camelCase event name --}}
+<Input @type="text" @keyDown={{this.updateName}} id="firstname-001" />
+
+
+{{!-- This works: uses 'on' with actual event name --}}
+<label for="firstname-002">First Name</label>
+<Input @type="text" {{on "keydown" this.updateName}} id="firstname-002" />
+
+{{!-- This does not work: uses dasherized event name --}}
+<label for="firstname-003">First Name</label>
+<Input @type="text" @key-down={{this.updateName}} id="firstname-003" />
+
+{{!-- This does not work: uses actual event name --}}
+<label for="firstname-004">First Name</label>
+<Input @type="text" @keydown={{this.updateName}} id="firstname-004" />

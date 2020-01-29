@@ -1,9 +1,20 @@
 <h1>Using native events with the on helper</h1>
 
 <p>Syntax: <code>&lt;Input &#123;&#123;on "event" this.someAction&#125;&#125; /&gt;</code></p>
+
+<h2>👍 Yes:</h2>
 <ol>
   <li>
     <label for="keyup">Event is keyup</label>
     <Input {{on "keyup" this.updateName}} id="keyup"/>
+  </li>
+</ol>
+
+<h2>👎 No:</h2>
+<ol>
+  <li>
+    <label for="key-up">Event is key-up</label>
+    <Input {{on "key-up" this.updateName}} id="key-up" />
+
   </li>
 </ol>

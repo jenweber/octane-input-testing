@@ -5,11 +5,11 @@
 {{!-- <Input @eventName={{this.someAction}}/> --}}
 
 <h2>Angle Brackets</h2>
-Syntax: Input @eventName=[[this.someAction]]
+<p>Syntax: <code>&lt;Input @eventName=[[this.someAction]]</code></p>
 
-<ul>
-  <li>
-    <label for="enter" class="broken">@enter (doesn't work)</label>
+<ol>
+  <li class="broken">
+    <label for="enter">@enter (doesn't work)</label>
     <Input @enter={{this.updateName}} id="enter"/>
     
   </li>
@@ -22,8 +22,8 @@ Syntax: Input @eventName=[[this.someAction]]
     <label for="insert-newline-textarea">@insertNewline textarea</label>
     <Textarea @insertNewline={{this.updateName}} id="insert-newline-textarea" />
   </li>
-  <li>
-    <label for="escape-press" class="broken">@escapePress (doesn't work)</label>
+  <li class="broken">
+    <label for="escape-press">@escapePress (doesn't work)</label>
     <Input @escapePress={{this.updateName}} id="escape-press"/>
   </li>
   <li>
@@ -42,28 +42,28 @@ Syntax: Input @eventName=[[this.someAction]]
     <label for="key-up">@keyUp</label>
     <Input @keyUp={{this.updateName}} id="key-up" />
   </li>
-</ul>
+</ol>
 
 <h2>Curly Braces</h2>
 
 Syntax: [[input enter=this.updateName]]
 
-<ul>
-  <li>
-    <label for="curly-enter" class="broken">@enter (doesn't work)</label>
+<ol>
+  <li class="broken">
+    <label for="curly-enter">@enter (doesn't work)</label>
     {{input enter=this.updateName id="curly-enter"}}
   </li>
   <li>
     <label for="curly-insert-newline-input">insertNewline input</label>
     {{input insertNewline=this.updateName id="curly-insert-newline-input" }}
-    *fires for input, but should it???
+    <p>*fires for input, but should it???</p>
   </li>
   <li>
     <label for="curly-insert-newline-textarea">insertNewline textarea</label>
     {{textarea insertNewline=this.updateName id="curly-insert-newline-textarea" }}
   </li>
-  <li>
-    <label for="curly-escape-press" class="broken">escapePress (doesn't work)</label>
+  <li class="broken">
+    <label for="curly-escape-press">escapePress (doesn't work)</label>
     {{input escapePress=this.updateName id="curly-escape-press"}}
   </li>
   <li>
@@ -82,29 +82,29 @@ Syntax: [[input enter=this.updateName]]
     <label for="curly-key-up">keyUp</label>
     {{input keyUp=this.updateName id="curly-key-up" }}
   </li>
-</ul>
+</ol>
 
 <h2>Curly with action helper</h2>
 
 Syntax: [[input enter=(action "updateName")]]
 
-<ul>
+<ol>
   <li>
     <label for="curly-action-enter">@enter</label>
     {{input enter=(action "updateName") id="curly-action-enter"}}
-    *This works now!
+    <p>*This works now!</p>
   </li>
   <li>
     <label for="curly-action-insert-newline-input">insertNewline input</label>
     {{input insertNewline=(action "updateName") id="curly-action-insert-newline-input" }}
-    *fires for input, but should it???
+    <p>*fires for input, but should it???</p>
   </li>
   <li>
     <label for="curly-action-insert-newline-textarea">insertNewline textarea</label>
     {{textarea insertNewline=(action "updateName") id="curly-action-insert-newline-textarea" }}
   </li>
-  <li>
-    <label for="curly-action-escape-press" class="broken">escapePress (doesn't work)</label>
+  <li class="broken">
+    <label for="curly-action-escape-press">escapePress (doesn't work)</label>
     {{input escapePress=(action "updateName") id="curly-action-escape-press"}}
   </li>
   <li>
@@ -123,16 +123,20 @@ Syntax: [[input enter=(action "updateName")]]
     <label for="curly-action-key-up">keyUp</label>
     {{input keyUp=(action "updateName") id="curly-action-key-up" }}
   </li>
-</ul>
+</ol>
 
 <h2>Using events in form elements</h2>
 
-Wrapping the special arguments in a form does not have any impact.
+<p>Wrapping the special arguments in a form does not have any impact.</p>
 
 <form>
-    <label for="form-enter" class="broken">enter</label>
+  <div class="form-group broken">
+    <label for="form-enter">enter</label>
     <Input @enter={{this.updateName}} id="form-enter"/>
+  </div>
     <br>
-    <label for="form-escape-press" class="broken">escapePress</label>
+  <div class="form-group broken">
+    <label for="form-escape-press">escapePress</label>
     <Input @escapePress={{this.updateName}} id="form-escape-press"/>
+  </div>
 </form>

@@ -5,7 +5,7 @@
 {{!-- <Input @eventName={{this.someAction}}/> --}}
 
 <h2>Angle Brackets</h2>
-<p>Syntax: <code>&lt;Input @eventName=[[this.someAction]]</code></p>
+<p>Syntax: <code>&lt;Input @eventName=&#123;&#123;this.someAction&#125;&#125; /&gt;</code></p>
 
 <ol>
   <li class="broken">
@@ -46,7 +46,7 @@
 
 <h2>Curly Braces</h2>
 
-Syntax: [[input enter=this.updateName]]
+Syntax: <code>&#123;&#123;input enter=this.updateName&#125;&#125;</code>
 
 <ol>
   <li class="broken">
@@ -86,7 +86,7 @@ Syntax: [[input enter=this.updateName]]
 
 <h2>Curly with action helper</h2>
 
-Syntax: [[input enter=(action "updateName")]]
+Syntax: <code>&#123;&#123;input enter=(action "updateName")&#125;&#125;</code>
 
 <ol>
   <li>

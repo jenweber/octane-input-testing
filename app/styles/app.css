@@ -28,3 +28,8 @@ input {
 textarea {
   min-width: 200px;
 }
+code {
+  background-color: #efefef;
+  padding: 0.5em;
+  border-radius: 3px;
+}

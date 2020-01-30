@@ -1,4 +1,5 @@
-<h2>👍 Yes:</h2>
+<h2 id="yes-list">👍 Yes:</h2>
+<h3 id="yes-keypress">Testing "keyup" variations</h3>
 <ol>
     <li>
         <p>Syntax: <code>&lt;Input &#123;&#123;on "keyup" this.someAction&#125;&#125; /&gt;</code></p>
@@ -11,6 +12,9 @@
         <label for="at-keyup-cc">Event is @keyUp</label>
         <Input @keyUp={{this.updateName}} id="at-keyup-cc" />
     </li>
+</ol>
+<h3 id="yes-keydown">Testing "keydown" variations</h3>
+<ol>
     <li>
         <p>Syntax:<code>&lt;Input /&gt;</code></p>
         <label for="on-keydown">Event is on keydown</label>
@@ -22,9 +26,26 @@
         <Input @type="text" @keyDown={{this.updateName}} id="at-keydown-cc" />
     </li>
 </ol>
+<h3 id="yes-enter">Testing enter variations</h3>
+<ol>
+    <li>
+        <p>Syntax:<code>&lt;Input /&gt;</code></p>
+        <label for="at-enter-action">Event is @enter + action</label>
+        <Input @type="text" @enter={{action "updateName"}} id="at-enter-action" />
+    </li>
+    <li>
+        <p>Syntax:<code>&#123;&#123;input enter=(action "updateName")&#125;&#125;</code></p>
+        {{!-- works --}}
+        <label for="enter-action">event is enter plus action</label>
+        {{input enter=(action "updateName") id="firstname-action-017b"}}
+    </li>        
+</ol>
+<ol>
+    
+</ol>
 
-<h2>👎 No:</h2>
-<h3>Testing variations of keyup</h3>
+<h2 id="no-list">👎 No:</h2>
+<h3 id="no-keyup">Testing keyup variations</h3>
 <ol>
     <li>
         <p>Syntax: <code>&lt;Input &#123;&#123;on "key-up" this.someAction&#125;&#125; /&gt;</code></p>
@@ -37,7 +58,7 @@
         <Input @key-up={{this.updateName}} id="at-key-up" />
     </li>
 </ol>
-<h3>Testing variations of keydown</h3>
+<h3 id="no-keydown">Testing keydown variations</h3>
 <ol>
     <li>
         <p>Syntax:<code>&lt;Input /&gt;</code></p>
@@ -69,27 +90,48 @@
     </li>
     <li>
         <p>Syntax:<code>&lt;Input /&gt;</code></p>
-        <label for="firstname-006b">First Name 6b</label>
-        <Input @type="text" {{on "keyDown" this.updateName}} id="firstname-006b" />
+        <label for="on-keydown-cc">Event is on keyDown</label>
+        <Input @type="text" {{on "keyDown" this.updateName}} id="on-keydown-cc" />
     </li>
+</ol>
+<h3 id="no-enter">Testing enter variations</h3>
+<ol>
+    <li>
+        <p>Syntax:<code>&lt;Input /&gt;</code></p>
+        <label for="on-enter">Event is on enter</label>
+        <Input @type="text" {{on "enter" this.updateName}} id="on-enter" />
+    </li>
+    <li>
+        <p>Syntax:<code>&lt;Input /&gt;</code></p>
+        {{!-- doesn't do anything --}}
+        <label for="at-enter">Event is at enter</label>
+        <Input @type="text" @enter={{this.updateName}} id="at-enter" />
+    </li>
+</ol>
+<h3 id="no-escape">Testing "escape press" variations</h3>
+<ol>
+    <li class="broken">
+        <p>Syntax:<code>&#123;&#123;input enter=this.someAction&#125;&#125;</code></p>
+        {{!-- does not work --}}
+        <label for="curly-enter-this">Event is enter plus this.someAction</label>
+        {{input type="text" enter=this.updateName id="curly-enter-this"}}
+    </li>      
+</ol>
+
+<h3>Working area</h3>
+<ol>
+    <li>
+        <p>Syntax:<code>&lt;Input /&gt;</code></p>
+        <label for="keyup-cc">Event is keyUp</label>
+        <Input keyUp={{this.updateName}} id="keyup-cc" />
+    </li>
+    
 </ol>
 
 
 
 
 
-
-
-
-
-
-
-
-
-<li>
-    <p>Syntax:<code>&lt;Input /&gt;</code></p>
-
-</li>
 {{!-- 
 
     enter
@@ -102,9 +144,7 @@
  --}}
 <br><br>
 
-{{!-- doesn't do anything --}}
-<label for="firstname-010">First Name enter</label>
-<Input @type="text" {{on "enter" this.updateName}} id="firstname-010" />
+
 
 {{!-- doesn't do anything --}}
 <label for="firstname-011">First Name 11</label>
@@ -129,29 +169,37 @@
 
 <br><br>
 <h3>At syntax</h3>
-{{!-- doesn't do anything --}}
-<label for="firstname-at-017">First Name At enter</label>
-<Input @type="text" @enter={{this.updateName}} id="firstname-at-017" />
+
 
 {{!-- works --}}
-<label for="firstname-at-018">First Name At 18 newline</label>
-<Textarea @type="text" @insertNewline={{this.updateName}} id="firstname-at-018" />
+<label for="at-insertnewline-cc">Event is @insertNewLine</label>
+<Textarea @insertNewline={{this.updateName}} id="at-insertnewline-cc" />
 
 {{!-- doesn't do anything --}}
-<label for="firstname-at-019">First Name At 19 escape</label>
-<Input @type="text" @escapePress={{this.updateName}} id="firstname-at-019" />
+<label for="at-escapepress-cc">Event is @escapePress</label>
+<Input @escapePress={{this.updateName}} id="at-escapepress-cc" />
 
-{{!-- works --}}
-<label for="firstname-at-020">First Name At 20 focus in</label>
-<Input @type="text" @focusIn={{this.updateName}} id="firstname-at-020" />
+{{!-- doesn't work --}}
+<li class="broken">
+    <label for="at-escape-press">Event is @escape-press</label>
+    <Input @escape-press={{this.updateName}} id="at-escape-press" />
+</li>
+
+{{!-- doesn't work --}}
+<label for="at-escapepress">Event is @escapepress</label>
+<Input @escapepress={{this.updateName}} id="at-escapepress" />
+
+{{!-- works--}}
+<label for="at-focusin-cc">Event is @focusIn</label>
+<Input @focusIn={{this.updateName}} id="at-focusIn-cc" />
 
 {{!-- works --}}
 <label for="firstname-at-021">First Name At focusOut</label>
-<Input @type="text" @focusOut={{this.updateName}} id="firstname-at-021" />
+<Input @focusOut={{this.updateName}} id="firstname-at-021" />
 
 {{!-- works --}}
 <label for="firstname-at-022">First Name At keyPress</label>
-<Input @type="text" @keyPress={{this.updateName}} id="firstname-at-022" />
+<Input @keyPress={{this.updateName}} id="firstname-at-022" />
 
 {{!-- works --}}
 <label for="firstname-at-023">First Name At keyUp</label>
@@ -160,17 +208,7 @@
 <br><br>
 <h3>Action syntax</h3>
 
-{{!-- works --}}
-<label for="firstname-action-017">First Name Action enter</label>
-<Input @type="text" @enter={{action "updateName"}} id="firstname-action-017" />
 
-{{!-- works --}}
-<label for="firstname-action-017b">First Name Action curly enter</label>
-{{input type="text" enter=(action "updateName") id="firstname-action-017b"}}
-
-{{!-- does not work --}}
-<label for="firstname-action-017c">First Name curly enter</label>
-{{input type="text" enter=this.updateName id="firstname-action-017c"}}
 
 {{!-- does not work --}}
 <label for="firstname-action-019">First Name Action 19 escape</label>
@@ -205,7 +243,7 @@ insert newline shouldn't be shown for the plain input component
 Keypress is a real event and escape press is not?
 enter is not a real event but it also doesn't work
 
-Philosphical question - is the happy path today to NOT use the input component?
+Philosophical question - is the happy path today to NOT use the input component?
 
 Use linting to indicate which things won't work
 --}}
@@ -213,16 +251,16 @@ Use linting to indicate which things won't work
 <h2>focus</h2>
 
  {{!-- no --}}
-<label for="firstname-focus-020">First Name 20 focus in</label>
-<Input @type="text" @focus-in={{this.updateName}} id="firstname-focus-020" />
+<label for="at-focus-in">Event is @focus-in</label>
+<Input @type="text" @focus-in={{this.updateName}} id="at-focus-in" />
 
  {{!-- no --}}
-<label for="firstname-focus-020a">First Name 20a focus in</label>
-<Input @type="text" @focusin={{this.updateName}} id="firstname-focus-020a" />
+<label for="at-focusin">Event is @focusin</label>
+<Input @type="text" @focusin={{this.updateName}} id="at-focusin" />
 
  {{!-- yes --}}
-<label for="firstname-focus-020b">First Name 20b focus in</label>
-<Input @type="text" {{on "focusin" this.updateName}} id="firstname-focus-020b" />
+<label for="on-focusin">Event is on focusin</label>
+<Input @type="text" {{on "focusin" this.updateName}} id="on-focusin" />
 
  {{!-- no --}}
 <label for="firstname-focus-020bc">First Name 20c focus in</label>

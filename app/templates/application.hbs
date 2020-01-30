@@ -1,15 +1,15 @@
 <header>
-  <h1>Testing: Input events in Ember</h1>
-  <nav>
+  <h1>Testing: Input events</h1>
+  {{!-- <nav>
     <ul>
       <li><LinkTo @route="input-arguments">"Special actions passed into Input"</LinkTo></li> 
       <li><LinkTo @route="native-events">"Using native events with the on helper"</LinkTo></li>
       <li><LinkTo @route="other-debugging">"Big list of generic testing"</LinkTo></li> 
     </ul>
-  </nav>
+  </nav> --}}
 </header>
 <main>
-  <p>Note: Items with a border (red) indicate that our guides indicate that it should work, but it does not.</p>
+  <p class="intro">To test, open your browser console and try to make each input fire the event. A red border is used to indicate items that do not work, even though the Ember documentation indicates that it should. The goal is to identify if there are bugs that we need to work out, and where the guides need to be updated to more accurately reflect how things work.</p>
   {{outlet}}
 </main>
 <footer>

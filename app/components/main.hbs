@@ -4,7 +4,7 @@
     <li>
         <p>Syntax: <code>&lt;Input &#123;&#123;on "keyup" this.someAction&#125;&#125; /&gt;</code></p>
         <label for="keyup">Event is on keyup</label>
-        <Input {{on "keyup" this.updateName}} id="keyup"/>
+        <Input {{on "keyup" this.updateName}} id="keyup" autocomplete="on" name="name" @value="" />
         <p>Note: this also responds after pressing the <kbd>TAB</kbd> key, not sure if that's great?</p>
     </li>
     <li>
@@ -38,10 +38,39 @@
         {{!-- works --}}
         <label for="enter-action">event is enter plus action</label>
         {{input enter=(action "updateName") id="firstname-action-017b"}}
-    </li>        
+    </li>
 </ol>
 <ol>
-    
+    <li>
+        {{!-- works --}}
+        <label for="at-insertnewline-cc">Event is @insertNewLine</label>
+        <Textarea @insertNewline={{this.updateName}} id="at-insertnewline-cc" />
+    </li>
+    <li>
+        {{!-- works--}}
+        <label for="at-focusin-cc">Event is @focusIn</label>
+        <Input @focusIn={{this.updateName}} id="at-focusIn-cc" />
+    </li>
+    <li>
+        {{!-- works --}}
+        <label for="firstname-at-021">First Name At focusOut</label>
+        <Input @focusOut={{this.updateName}} id="firstname-at-021" />
+    </li>
+    <li>
+        {{!-- works --}}
+        <label for="firstname-at-022">First Name At keyPress</label>
+        <Input @keyPress={{this.updateName}} id="firstname-at-022" />
+    </li>
+    <li>
+        {{!-- works --}}
+        <label for="firstname-at-023">First Name At keyUp</label>
+        <Input @type="text" @keyUp={{this.updateName}} id="firstname-at-023" />
+    </li>
+    <li>
+        {{!-- works --}}
+        <label for="firstname-action-019b">First Name Action 19 escape dash press</label>
+        <Input @type="text" @escape-press={{action "updateName"}} id="firstname-action-019b" />
+    </li>
 </ol>
 
 <h2 id="no-list">👎 No:</h2>
@@ -56,6 +85,11 @@
         <p>Syntax: <code>&lt;Input @key-up=&#123;&#123;this.someAction&#125;&#125; /&gt;</code></p>
         <label for="at-key-up">Event is @key-up</label>
         <Input @key-up={{this.updateName}} id="at-key-up" />
+    </li>
+    <li>
+        <p>Syntax:<code>&lt;Input /&gt;</code></p>
+        <label for="keyup-cc">Event is keyUp</label>
+        <Input keyUp={{this.updateName}} id="keyup-cc" />
     </li>
 </ol>
 <h3 id="no-keydown">Testing keydown variations</h3>
@@ -114,24 +148,111 @@
         <p>Syntax:<code>&#123;&#123;input enter=this.someAction&#125;&#125;</code></p>
         {{!-- does not work --}}
         <label for="curly-enter-this">Event is enter plus this.someAction</label>
-        {{input type="text" enter=this.updateName id="curly-enter-this"}}
+        {{input type="text" autocomplete="on" enter=this.updateName id="curly-enter-this"}}
     </li>      
 </ol>
-
-<h3>Working area</h3>
 <ol>
     <li>
-        <p>Syntax:<code>&lt;Input /&gt;</code></p>
-        <label for="keyup-cc">Event is keyUp</label>
-        <Input keyUp={{this.updateName}} id="keyup-cc" />
+        {{!-- no --}}
+        <label for="at-focus-in">Event is @focus-in</label>
+        <Input @type="text" @focus-in={{this.updateName}} id="at-focus-in" />
+    </li>
+    <li>
+        {{!-- no --}}
+        <label for="at-focusin">Event is @focusin</label>
+        <Input @type="text" @focusin={{this.updateName}} id="at-focusin" />
+    </li>
+    <li>
+        {{!-- doesn't do anything --}}
+        <label for="on-insert-newline">Event is on insert-newline</label>
+        <Textarea @type="text" {{on "insert-newline" this.updateName}} id="on-insert-newline" />
+    </li>
+    <li>
+        {{!-- doesn't do anything --}}
+        <label for="on-escape-press">Event is on escape-press</label>
+        <Input @type="text" {{on "escape-press" this.updateName}} id="on-escape-press" />
+    </li>
+    <li>
+        {{!-- doesn't do anything --}}
+        <label for="at-escapepress-cc">Event is @escapePress</label>
+        <Input @escapePress={{this.updateName}} id="at-escapepress-cc" />
+    </li>
+    <li class="broken">
+        {{!-- doesn't work --}}
+        <label for="at-escape-press">Event is @escape-press</label>
+        <Input @escape-press={{this.updateName}} id="at-escape-press" />
+    </li>
+    <li>
+        {{!-- doesn't work --}}
+        <label for="at-escapepress">Event is @escapepress</label>
+        <Input @escapepress={{this.updateName}} id="at-escapepress" />
+    </li>
+    <li>
+        {{!-- doesn't do anything --}}
+        <label for="on-focus-in">Event is on focus-in</label>
+        <Input @type="text" {{on "focus-in" this.updateName}} id="firstname-013" />
+    </li>
+    <li>
+        {{!-- doesn't do anything --}}
+        <label for="firstname-016">First Name 16</label>
+        <Input @type="text" {{on "focus-out" this.updateName}} id="firstname-016" />
+    </li>
+    <li>
+        {{!-- doesn't do anything --}}
+        <label for="firstname-014">First Name key-press</label>
+        <Input @type="text" {{on "key-press" this.updateName}} id="firstname-014" />
+    </li>
+    <li>
+        {{!-- does not work --}}
+        <label for="firstname-action-019">First Name Action 19 escape</label>
+        <Input @type="text" @escapePress={{action "updateName"}} id="firstname-action-019" />
+    </li>
+
+    <li>
+        {{!-- This does not work: uses dasherized event name --}}
+        <label for="firstname-003">First Name 3</label>
+        <Input @type="text" @key-press={{this.updateName}} id="firstname-003" />
+    </li>
+    <li>
+        {{!-- no --}}
+        <label for="on-focus-in">Event is on focus-in</label>
+        <Input @type="text" {{on "focus-in" this.updateName}} id="on-focus-in" />
+    </li>
+    <li>
+        {{!-- no --}}
+        <label for="at-focus-out">Event is @focus-out</label>
+        <Input @type="text" @focus-out={{this.updateName}} id="at-focus-out" />
+    </li>
+    <li>
+        {{!-- no --}}
+        <label for="at-focusout">Event is @focusout</label>
+        <Input @type="text" @focusout={{this.updateName}} id="at-focusout" />
     </li>
     
+    <li>
+        {{!-- no --}}
+        <label for="on-focus-out">on-focus-out</label>
+        <Input @type="text" {{on "focus-out" this.updateName}} id="on-focus-out" />
+    </li>
+    <li>
+        {{!-- yes --}}
+        <label for="on-focusin">Event is on focusin</label>
+        <Input @type="text" {{on "focusin" this.updateName}} id="on-focusin" />
+    </li>
+    <li>
+        {{!-- yes --}}
+        <label for="on-focusout">Event is on focusout</label>
+        <Input @type="text" {{on "focusout" this.updateName}} id="on-focusout" />
+    </li>
 </ol>
 
+{{!-- <ol>
+    <li>
+        <p>Syntax:<code>&lt;Input /&gt;</code></p>
 
-
-
-
+    </li>
+    
+</ol> --}}
 {{!-- 
 
     enter
@@ -142,96 +263,6 @@
     key-press
     key-up
  --}}
-<br><br>
-
-
-
-{{!-- doesn't do anything --}}
-<label for="firstname-011">First Name 11</label>
-<Textarea @type="text" {{on "insert-newline" this.updateName}} id="firstname-011" />
-
-{{!-- doesn't do anything --}}
-<label for="firstname-012">First Name 12</label>
-<Input @type="text" {{on "escape-press" this.updateName}} id="firstname-012" />
-
-{{!-- doesn't do anything --}}
-<label for="firstname-013">First Name 13</label>
-<Input @type="text" {{on "focus-in" this.updateName}} id="firstname-013" />
-
-{{!-- doesn't do anything --}}
-<label for="firstname-016">First Name 16</label>
-<Input @type="text" {{on "focus-out" this.updateName}} id="firstname-016" />
-
-{{!-- doesn't do anything --}}
-<label for="firstname-014">First Name key-press</label>
-<Input @type="text" {{on "key-press" this.updateName}} id="firstname-014" />
-
-
-<br><br>
-<h3>At syntax</h3>
-
-
-{{!-- works --}}
-<label for="at-insertnewline-cc">Event is @insertNewLine</label>
-<Textarea @insertNewline={{this.updateName}} id="at-insertnewline-cc" />
-
-{{!-- doesn't do anything --}}
-<label for="at-escapepress-cc">Event is @escapePress</label>
-<Input @escapePress={{this.updateName}} id="at-escapepress-cc" />
-
-{{!-- doesn't work --}}
-<li class="broken">
-    <label for="at-escape-press">Event is @escape-press</label>
-    <Input @escape-press={{this.updateName}} id="at-escape-press" />
-</li>
-
-{{!-- doesn't work --}}
-<label for="at-escapepress">Event is @escapepress</label>
-<Input @escapepress={{this.updateName}} id="at-escapepress" />
-
-{{!-- works--}}
-<label for="at-focusin-cc">Event is @focusIn</label>
-<Input @focusIn={{this.updateName}} id="at-focusIn-cc" />
-
-{{!-- works --}}
-<label for="firstname-at-021">First Name At focusOut</label>
-<Input @focusOut={{this.updateName}} id="firstname-at-021" />
-
-{{!-- works --}}
-<label for="firstname-at-022">First Name At keyPress</label>
-<Input @keyPress={{this.updateName}} id="firstname-at-022" />
-
-{{!-- works --}}
-<label for="firstname-at-023">First Name At keyUp</label>
-<Input @type="text" @keyUp={{this.updateName}} id="firstname-at-023" />
-
-<br><br>
-<h3>Action syntax</h3>
-
-
-
-{{!-- does not work --}}
-<label for="firstname-action-019">First Name Action 19 escape</label>
-<Input @type="text" @escapePress={{action "updateName"}} id="firstname-action-019" />
-
-{{!-- works --}}
-<label for="firstname-action-019b">First Name Action 19 escape dash press</label>
-<Input @type="text" @escape-press={{action "updateName"}} id="firstname-action-019b" />
-
-
-<h2>Not Working</h2>
-
-
-
-
-{{!-- This does not work: uses dasherized event name --}}
-<label for="firstname-003">First Name 3</label>
-<Input @type="text" @key-press={{this.updateName}} id="firstname-003" />
-
-
-
-
-
 
 {{!-- 
 TODO
@@ -247,37 +278,3 @@ Philosophical question - is the happy path today to NOT use the input component?
 
 Use linting to indicate which things won't work
 --}}
-
-<h2>focus</h2>
-
- {{!-- no --}}
-<label for="at-focus-in">Event is @focus-in</label>
-<Input @type="text" @focus-in={{this.updateName}} id="at-focus-in" />
-
- {{!-- no --}}
-<label for="at-focusin">Event is @focusin</label>
-<Input @type="text" @focusin={{this.updateName}} id="at-focusin" />
-
- {{!-- yes --}}
-<label for="on-focusin">Event is on focusin</label>
-<Input @type="text" {{on "focusin" this.updateName}} id="on-focusin" />
-
- {{!-- no --}}
-<label for="firstname-focus-020bc">First Name 20c focus in</label>
-<Input @type="text" {{on "focus-in" this.updateName}} id="firstname-focus-020bc" />
-
-{{!-- no --}}
-<label for="firstname-focus-021">First Name focusOut</label>
-<Input @type="text" @focus-out={{this.updateName}} id="firstname-focus-021" />
-
-{{!-- no --}}
-<label for="firstname-focus-021a">First Name focusOuta</label>
-<Input @type="text" @focusout={{this.updateName}} id="firstname-focus-021a" />
-
-{{!-- yes --}}
-<label for="firstname-focus-021b">First Name focusOutb</label>
-<Input @type="text" {{on "focusout" this.updateName}} id="firstname-focus-021b" />
-
-{{!-- no --}}
-<label for="firstname-focus-021c">First Name focusOutc</label>
-<Input @type="text" {{on "focus-out" this.updateName}} id="firstname-focus-021c" />

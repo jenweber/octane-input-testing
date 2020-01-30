@@ -1,16 +1,95 @@
-<h1>Input testing</h1>
+<h2>👍 Yes:</h2>
+<ol>
+    <li>
+        <p>Syntax: <code>&lt;Input &#123;&#123;on "keyup" this.someAction&#125;&#125; /&gt;</code></p>
+        <label for="keyup">Event is on keyup</label>
+        <Input {{on "keyup" this.updateName}} id="keyup"/>
+        <p>Note: this also responds after pressing the <kbd>TAB</kbd> key, not sure if that's great?</p>
+    </li>
+    <li>
+        <p>Syntax: <code>&lt;Input @keyUp=&#123;&#123;this.someAction&#125;&#125; /&gt;</code></p>
+        <label for="at-keyup-cc">Event is @keyUp</label>
+        <Input @keyUp={{this.updateName}} id="at-keyup-cc" />
+    </li>
+    <li>
+        <p>Syntax:<code>&lt;Input /&gt;</code></p>
+        <label for="on-keydown">Event is on keydown</label>
+        <Input @type="text" {{on "keydown" this.updateName}} id="on-keydown" />
+    </li>
+    <li>
+        <p>Syntax:<code>&lt;Input /&gt;</code></p>
+        <label for="at-keydown-cc">Event is @keyDown</label>
+        <Input @type="text" @keyDown={{this.updateName}} id="at-keydown-cc" />
+    </li>
+</ol>
 
-<h2>Working</h2>
+<h2>👎 No:</h2>
+<h3>Testing variations of keyup</h3>
+<ol>
+    <li>
+        <p>Syntax: <code>&lt;Input &#123;&#123;on "key-up" this.someAction&#125;&#125; /&gt;</code></p>
+        <label for="on-key-up">Event is on key-up</label>
+        <Input {{on "key-up" this.updateName}} id="on-key-up" />
+    </li>
+    <li class="broken">
+        <p>Syntax: <code>&lt;Input @key-up=&#123;&#123;this.someAction&#125;&#125; /&gt;</code></p>
+        <label for="at-key-up">Event is @key-up</label>
+        <Input @key-up={{this.updateName}} id="at-key-up" />
+    </li>
+</ol>
+<h3>Testing variations of keydown</h3>
+<ol>
+    <li>
+        <p>Syntax:<code>&lt;Input /&gt;</code></p>
+        <label for="at-keydown">Event is @keydown</label>
+        <Input @type="text" @keydown={{this.updateName}} id="at-keydown" />
+    </li>
+    <li>
+        <p>Syntax:<code>&lt;Input /&gt;</code></p>
+        <label for="at-onkeydown">Event is @onkeydown</label>
+        <Input @type="text" @onkeydown={{this.updateName}} id="at-onkeydown" />
+    </li>
+    <li>
+        <p>Syntax:<code>&lt;Input /&gt;</code></p>
+        {{!-- This does not work: uses on event name --}}
+        <label for="at-onkeydown-cc">Event is @onKeyDown</label>
+        <Input @type="text" @onKeyDown={{this.updateName}} id="at-onkeydown-cc" />
+    </li>
+    <li>
+        <p>Syntax:<code>&lt;Input /&gt;</code></p>
+        {{!-- not working --}}
+        <label for="on-onkeydown">Event is on onkeydown</label>
+        <Input @type="text" {{on "onkeydown" this.updateName}} id="on-onkeydown" />
+    </li>
+    <li>
+        <p>Syntax:<code>&lt;Input /&gt;</code></p>
+        {{!-- not working --}}
+        <label for="on-onkeydown-cc">Event is on onKeyDown</label>
+        <Input @type="text" {{on "onKeyDown" this.updateName}} id="on-onkeydown-cc" />
+    </li>
+    <li>
+        <p>Syntax:<code>&lt;Input /&gt;</code></p>
+        <label for="firstname-006b">First Name 6b</label>
+        <Input @type="text" {{on "keyDown" this.updateName}} id="firstname-006b" />
+    </li>
+</ol>
 
-<label for="firstname-001">First Name 1</label>
-{{!-- This works: uses camelCase event name --}}
-<Input @type="text" @keyDown={{this.updateName}} id="firstname-001" />
 
 
-{{!-- This works: uses 'on' with actual event name --}}
-<label for="firstname-002">First Name 2</label>
-<Input @type="text" {{on "keydown" this.updateName}} id="firstname-002" />
 
+
+
+
+
+
+
+
+
+
+<li>
+    <p>Syntax:<code>&lt;Input /&gt;</code></p>
+
+</li>
 {{!-- 
 
     enter
@@ -47,9 +126,6 @@
 <label for="firstname-014">First Name key-press</label>
 <Input @type="text" {{on "key-press" this.updateName}} id="firstname-014" />
 
-{{!-- doesn't do anything --}}
-<label for="firstname-015">First Name key-up</label>
-<Input @type="text" {{on "key-up" this.updateName}} id="firstname-015" />
 
 <br><br>
 <h3>At syntax</h3>
@@ -108,33 +184,14 @@
 <h2>Not Working</h2>
 
 
-<label for="firstname-004">First Name 4</label>
-<Input @type="text" @keydown={{this.updateName}} id="firstname-004" />
 
-{{!-- This does not work: uses on event name --}}
-<label for="firstname-005">First Name 5</label>
-<Input @type="text" @onkeydown={{this.updateName}} id="firstname-005" />
-
-{{!-- This does not work: uses on event name --}}
-<label for="firstname-005a">First Name 5a</label>
-<Input @type="text" @onKeyDown={{this.updateName}} id="firstname-005a" />
 
 {{!-- This does not work: uses dasherized event name --}}
 <label for="firstname-003">First Name 3</label>
 <Input @type="text" @key-press={{this.updateName}} id="firstname-003" />
 
 
-{{!-- not working --}}
-<label for="firstname-006">First Name6</label>
-<Input @type="text" {{on "onkeydown" this.updateName}} id="firstname-006" />
 
-{{!-- not working --}}
-<label for="firstname-006a">First Name 6a</label>
-<Input @type="text" {{on "onKeyDown" this.updateName}} id="firstname-006a" />
-
-{{!-- not working --}}
-<label for="firstname-006b">First Name 6b</label>
-<Input @type="text" {{on "keyDown" this.updateName}} id="firstname-006b" />
 
 
 

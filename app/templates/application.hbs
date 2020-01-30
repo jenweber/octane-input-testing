@@ -1,1 +1,22 @@
-{{outlet}}
+<header>
+  <h1>Testing: Input events in Ember</h1>
+  <nav>
+    <ul>
+      <li><LinkTo @route="input-arguments">"Special actions passed into Input"</LinkTo></li> 
+      <li><LinkTo @route="native-events">"Using native events with the on helper"</LinkTo></li>
+      <li><LinkTo @route="other-debugging">"Big list of generic testing"</LinkTo></li> 
+    </ul>
+  </nav>
+</header>
+<main>
+  <p>Note: Items with a border (red) indicate that our guides indicate that it should work, but it does not.</p>
+  {{outlet}}
+</main>
+<footer>
+  <p>Resources used:</p>
+  <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">MDN</a></li>
+    <li><a href="https://guides.emberjs.com/release/components/built-in-components/#toc_input">Ember Guides</a></li>
+    <li><a href="https://api.emberjs.com/ember/release/classes/Ember.Templates.components/methods/Input?anchor=Input">API docs</a></li>
+  </ul>
+</footer>

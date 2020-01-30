@@ -1,20 +1,30 @@
 <h1>Using native events with the on helper</h1>
 
-<p>Syntax: <code>&lt;Input &#123;&#123;on "event" this.someAction&#125;&#125; /&gt;</code></p>
 
 <h2>👍 Yes:</h2>
 <ol>
   <li>
+    <p>Syntax: <code>&lt;Input &#123;&#123;on "keyup" this.someAction&#125;&#125; /&gt;</code></p>
     <label for="keyup">Event is keyup</label>
     <Input {{on "keyup" this.updateName}} id="keyup"/>
+  </li>
+  <li>
+    <p>Syntax: <code>&lt;Input @keyUp=&#123;&#123;this.someAction&#125;&#125; /&gt;</code></p>
+    <label for="at-key-up-cc">Event is @keyUp</label>
+    <Input @keyUp={{this.updateName}} id="at-key-up-cc" />
   </li>
 </ol>
 
 <h2>👎 No:</h2>
 <ol>
   <li>
-    <label for="key-up">Event is key-up</label>
-    <Input {{on "key-up" this.updateName}} id="key-up" />
-
+    <p>Syntax: <code>&lt;Input &#123;&#123;on "key-up" this.someAction&#125;&#125; /&gt;</code></p>
+    <label for="on-key-up">Event is on key-up</label>
+    <Input {{on "key-up" this.updateName}} id="on-key-up" />
+  </li>
+    <li>
+    <p>Syntax: <code>&lt;Input @key-up=&#123;&#123;this.someAction&#125;&#125; /&gt;</code></p>
+    <label for="at-key-up">Event is @key-up</label>
+    <Input @key-up={{this.updateName}} id="at-key-up" />
   </li>
 </ol>

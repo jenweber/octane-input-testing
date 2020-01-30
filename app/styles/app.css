@@ -19,17 +19,47 @@ p {
   font-style: italic;
 }
 input {
-  line-height: 1.5;
-  padding: 0.5em;
   border-radius: 3px;
   border: 1px solid #4d4d4d;
+  line-height: 1.5;
   min-width: 200px;
+  padding: 0.5em;
 }
 textarea {
   min-width: 200px;
 }
-code {
+code, kbd {
   background-color: #efefef;
   padding: 0.5em;
   border-radius: 3px;
+}
+nav {
+  border: 1px solid black;
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}
+nav > ul {
+  display: flex;
+  flex-flow: row wrap;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}
+nav > ul > li {
+  display: flex;
+  padding: 0;
+}
+nav > ul > li > a {
+  padding: 1em;
+  border-right: 1px solid black;
+}
+main {
+  padding: 1em;
+}
+footer {
+  border-top: 1px solid black;
+  width: 100%;
 }
